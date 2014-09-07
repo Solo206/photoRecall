@@ -1,0 +1,84 @@
+<!-- photoRecall application -->
+<!-- This application will attempt to populate the screen with initially 16 boxes which represent cards.  The computer will ask user to click on a box.  If the user clicks on a box, the box will reveal photo from instagram.  The user will then be prompted to click on another box.  When the user clicks on the second box, and the second photo revealed under the box is a matching photo, then the boxes will be hidden (removed from field of play).  If the photos do not match, then the photos will be hidden from user.  The player will also get awarded a star for every match illustrated on bottom of screen.  Once all photos are matched, the congratulatory message and hidden photo will be revealed.  Player will get a chance to play again if he/she chooses.  -->
+
+<!-- 1st step: hard code the general layout of boxes for app -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Photo*Recall</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+	<header>
+		<!-- container for title -->
+		<div class="title">PHOTO * RECALL</div>
+	</header>
+	<section class="intro">
+		<!-- container holding instructions on how to play -->
+		<div class="howTitle">How to play</div>
+		<ul class="instruct">
+			<li>Click on box to show photo</li>
+			<li>Match all pairs of photos to reveal prize</li>
+		</ul>
+		<div class="luck">Good Luck!</div>
+	</section>
+	<section class="play">
+		<!-- container holding playing boxes and stars -->
+		<div class="squares">
+			<div class="rowOne">
+				<div class="columnOne"></div>
+				<div class="columnTwo"></div>
+				<div class="columnThree"></div>
+				<div class="columnFour"></div>
+			</div>
+			<div class="rowTwo">
+				<div class="columnOne"></div>
+				<div class="columnTwo"></div>
+				<div class="columnThree"></div>
+				<div class="columnFour"></div>
+
+			</div>
+			<div class="rowThree">
+				<div class="columnOne"></div>
+				<div class="columnTwo"></div>
+				<div class="columnThree"></div>
+				<div class="columnFour"></div>
+
+			</div>
+			<div class="rowFour">
+				<div class="columnOne"></div>
+				<div class="columnTwo"></div>
+				<div class="columnThree"></div>
+				<div class="columnFour"></div>
+			</div>
+		</div>
+		<!-- 8 stars that will turn yellow as boxes match -->
+		<div class="stars">
+			<div class="one"></div>
+			<div class="two"></div>
+			<div class="three"></div>
+			<div class="four"></div>
+			<div class="five"></div>
+			<div class="six"></div>
+			<div class="seven"></div>
+			<div class="eight"></div>
+		</div>
+	</section>
+	<section class="gameOver">
+		<!-- container holding prize photo and play again button -->
+		<div class="prize">
+			<!-- container holding prize image and congratulatory message -->
+			<div class="photo"></div>
+			<div class="star">Superb Recall!!</div>
+		</div>
+		<ul class="social">
+			<li class="instagram">Instagram</li>
+			<li class="facebook">Facebook</li>
+			<li class="twitter">Twitter</li>
+			<li class="pinterest">Pinterest</li>
+		</ul>
+		<button class="replay">Play Again?</button>
+	</section>
+</body>
+</html>
