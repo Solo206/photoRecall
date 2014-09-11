@@ -1,0 +1,152 @@
+html, body{
+	height:100%;
+	margin:0;
+	padding:0;
+}
+header{
+	position:relative;
+	height:15%;
+	background:grey;
+	border:5px dashed lightgrey;
+	padding-top:3%;
+}
+section{
+	height:85%;
+	background:lightblue;
+/*	border:5px solid blue;
+*/}
+.col-xs-{
+	position:relative;
+/*	height:100%;*/
+	text-align:center;
+	font-size:4em;	
+/*	border:1px solid black;*/
+	color:white;
+
+/*	vertical-align: middle;*/
+}
+.intro{
+	display:block;
+}
+.howTitle, .instruct, .luck{
+	position:relative;
+	top:35%;
+	line-height:75px;
+	text-align:left;
+
+}
+.howTitle{
+	left:0;
+	font-size:2.8em;
+	text-decoration:underline;
+}
+.instruct{
+	left:0;
+	font-size:2em;
+}
+.luck{
+	left:0;
+	font-size:2em;
+}
+.start{
+	background:grey;
+	font-size:2.8em;
+	left:60%;
+}
+.play{
+	border:1px solid black;
+	display:block;
+}
+/*squares*/
+.squares{
+	display:inline-block;
+	height:2.5em;
+	width:2.5em;
+	margin:1%;
+	background:blue;
+}
+.squareHolder{
+	position:relative;
+	left:8%;
+	top:3%;
+}
+.stars{
+	height:16%;
+	position:relative;
+/*	border:5px solid black;*/
+	top:5%;
+	text-align:center;
+}
+.star{
+	/*border:1px solid red;*/
+	position:relative;
+	display:inline-block;
+	background:url('../star.png') no-repeat;
+	height:100%;
+	width:10%;
+	background-size:contain;
+}
+.gameOver{
+position:relative;
+display:block;
+
+}
+.prize{
+	position:relative;
+	height:80%;
+	width:80%;
+	left:10%;
+	background:grey;
+	top:5%;
+	border:5px solid lightgrey;
+	text-align:center;
+	vertical-align:middle;
+}
+.prize .superb{
+	position:relative;
+	display:inline-block;
+/*	vertical-align:middle;
+*/	border:5px solid darkgrey;
+	z-index:2;
+/*	margin-top:-100%;
+*/
+	font-size:5em;
+	top:-70%;
+	background:grey;
+	opacity:0.8;
+	border-radius:10px;
+}
+.photo{
+	position:relative;
+	background:url('../can1.png');
+	height:100%;
+	background-size:cover;
+	z-index:1;
+}
+/*social media and replay button*/
+.socrep{
+	position:relative;
+	top:5%;
+}
+.social{
+	display:inline-block;
+	position:relative;
+	left:5%;
+}
+
+.social li{
+	display:inline-block;
+	font-size:0.4em;
+	position:relative;
+}
+
+.replay{
+	display:inline-block;
+	font-size:1.5em;
+	position:relative;
+	left:10%;
+	background:lightgrey;
+}
+.hides{
+	opacity:0.0;
+}

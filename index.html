@@ -7,78 +7,95 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Photo*Recall</title>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 </head>
 <body>
-	<header>
-		<!-- container for title -->
-		<div class="title">PHOTO * RECALL</div>
+	<header class="container">
+		<div class="row">
+			<!-- container for title -->
+			<div class="col-xs- title">PHOTO * RECALL</div>
+			<!-- <div class="col-sm-">PHOTO * RECALL</div> -->
+		</div>
 	</header>
-	<section class="intro">
+	<section class="container intro">
 		<!-- container holding instructions on how to play -->
-		<div class="howTitle">How to play</div>
-		<ul class="instruct">
-			<li>Click on box to show photo</li>
-			<li>Match all pairs of photos to reveal prize</li>
-		</ul>
-		<div class="luck">Good Luck!</div>
+		<div class="row">
+			<div class="col-xs- howTitle">How to play</div>
+		</div>
+		<div class="row">
+			<ul class="col-xs- instruct">
+				<li>Click on box to show photo</li>
+				<li>Match all pairs of photos to reveal prize</li>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="col-xs- luck">Good Luck!</div>
+		</div>
+		<div class="row">
+			<button class="col-xs- start">start</button>
+		</div>
 	</section>
-	<section class="play">
+	<section class="container play">
 		<!-- container holding playing boxes and stars -->
-		<div class="squares">
-			<div class="rowOne">
-				<div class="columnOne"></div>
-				<div class="columnTwo"></div>
-				<div class="columnThree"></div>
-				<div class="columnFour"></div>
+			<div class="squareHolder">
+			<div class="row">
+				<div class="col-xs- squares" id="1" data="1"></div>
+				<div class="col-xs- squares" id="2" data="1"></div>
+				<div class="col-xs- squares" id="3" data="1"></div>
+				<div class="col-xs- squares" id="4" data="1"></div>
 			</div>
-			<div class="rowTwo">
-				<div class="columnOne"></div>
-				<div class="columnTwo"></div>
-				<div class="columnThree"></div>
-				<div class="columnFour"></div>
-
+			<div class="row">
+				<div class="col-xs- squares" id="5" data="1"></div>
+				<div class="col-xs- squares" id="6" data="1"></div>
+				<div class="col-xs- squares" id="7" data="1"></div>
+				<div class="col-xs- squares" id="8" data="1"></div>
 			</div>
-			<div class="rowThree">
-				<div class="columnOne"></div>
-				<div class="columnTwo"></div>
-				<div class="columnThree"></div>
-				<div class="columnFour"></div>
-
+			<div class="row">
+				<div class="col-xs- squares" id="9" data="1"></div>
+				<div class="col-xs- squares" id="10" data="1"></div>
+				<div class="col-xs- squares" id="11" data="1"></div>
+				<div class="col-xs- squares" id="12" data="1"></div>
 			</div>
-			<div class="rowFour">
-				<div class="columnOne"></div>
-				<div class="columnTwo"></div>
-				<div class="columnThree"></div>
-				<div class="columnFour"></div>
+			<div class="row">
+				<div class="col-xs- squares" id="13" data="1"></div>
+				<div class="col-xs- squares" id="14" data="1"></div>
+				<div class="col-xs- squares" id="15" data="1"></div>
+				<div class="col-xs- squares" id="16" data="1"></div>
+			</div>
 			</div>
 		</div>
 		<!-- 8 stars that will turn yellow as boxes match -->
-		<div class="stars">
-			<div class="one"></div>
-			<div class="two"></div>
-			<div class="three"></div>
-			<div class="four"></div>
-			<div class="five"></div>
-			<div class="six"></div>
-			<div class="seven"></div>
-			<div class="eight"></div>
+		<div class="row stars">
+			<div class="col-xs- star one"></div>
+			<div class="col-xs- star two"></div> 
+			<div class="col-xs- star three"></div>
+			<div class="col-xs- star four"></div>
+			<div class="col-xs- star five"></div>
+			<div class="col-xs- star six"></div>
+			<div class="col-xs- star seven"></div>
+			<div class="col-xs- star eight"></div>
 		</div>
 	</section>
-	<section class="gameOver">
+	<section class="container gameOver">
 		<!-- container holding prize photo and play again button -->
-		<div class="prize">
+		<div class="row prize">
 			<!-- container holding prize image and congratulatory message -->
-			<div class="photo"></div>
-			<div class="star">Superb Recall!!</div>
+			<div class="col-xs- photo"></div>
+			<div class="col-xs- superb">Superb Recall!!</div>
 		</div>
-		<ul class="social">
-			<li class="instagram">Instagram</li>
-			<li class="facebook">Facebook</li>
-			<li class="twitter">Twitter</li>
-			<li class="pinterest">Pinterest</li>
-		</ul>
-		<button class="replay">Play Again?</button>
+		<div class="row socrep">
+			<ul class="col-xs- social">
+				<li class="instagram">Instagram</li>
+				<li class="facebook">Facebook</li>
+				<li class="twitter">Twitter</li>
+				<li class="pinterest">Pinterest</li>
+			</ul>
+			<button class="col-xs- replay">Play Again?</button>
+		</div>
 	</section>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/app.js"></script>
 </body>
 </html>
