@@ -77,14 +77,21 @@ section{
 	top:5%;
 	text-align:center;
 }
-.star{
+.starHold{
 	/*border:1px solid red;*/
 	position:relative;
 	display:inline-block;
-	background:url('../star.png') no-repeat;
+	
 	height:100%;
 	width:10%;
 	background-size:contain;
+}
+.noStar{
+	background:url('../nostar.png') no-repeat;
+}
+.star{
+	background:url('../star.png') no-repeat;
+
 }
 .gameOver{
 position:relative;

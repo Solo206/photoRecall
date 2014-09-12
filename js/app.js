@@ -19,6 +19,7 @@ $(document).ready(function(){
 	var firstfoto=null;
 	var secondfoto=null;
 	var starCount=0;
+
 	$(".squares").click(function(event){
 		event.preventDefault();
 
@@ -44,7 +45,8 @@ $(document).ready(function(){
 				//remove matched DOM element
 				// alert(firstData);
 				// alert(secondData);
-				setTimeout(removeTiles,3000, firstfoto,secondfoto);
+				starCount++;
+				setTimeout(removeTiles,3000, firstfoto,secondfoto,starCount);
 
 			}
 			else{
@@ -64,7 +66,9 @@ $(document).ready(function(){
 			firstData="";
 			secondData="";
 		}
-		
+		if (starCount==8){
+			setTimeout(setGameOver,2000);
+		}
 	});
 
 });
@@ -130,9 +134,11 @@ function resetTiles(firstfoto,secondfoto){
 				$("#"+secondfoto+ " img").css({'opacity':'0'});
 
 }
-function removeTiles(firstfoto,secondfoto){
+function removeTiles(firstfoto,secondfoto,starCount){
+				
 				$("#"+firstfoto).parent().css({'opacity':'0'});
 				$("#"+secondfoto).parent().css({'opacity':'0'});
+				setStar(starCount);
 
 }
 
@@ -164,3 +170,11 @@ function getArrayPhoto(){
 		}
 	});//ajax
 }//function
+function setStar(){
+		$('.noStar').first().addClass('star');
+		$('.noStar').first().removeClass('noStar');
+}
+function setGameOver(){
+	$('.play').hide();
+	$('.gameOver').show();
+}
