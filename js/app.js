@@ -1,10 +1,11 @@
 $(document).ready(function(){
 	//executes series of command when document is loaded
-
+	getArrayPhoto();
 	//reset all settings
 	reset();
 	//randomize pairs
 	randomize();
+
 
 	$(".start").click(function(){
 		//hides intro and shows play screen after start button pressed
@@ -13,73 +14,56 @@ $(document).ready(function(){
 
 	});
 	//initialize firstphoto as an empty value
-	var firstPhoto="";
-	var secondPhoto="";
-	$(".squares").click(function(){
+	var firstData="";
+	var secondData="";
+	var firstfoto=null;
+	var secondfoto=null;
+	var starCount=0;
+	$(".squares").click(function(event){
+		event.preventDefault();
 
-		if (firstPhoto==""){
+		if (firstData==""){
 			//after clicking on square->get attribute data from square and background to new color
-			firstPhoto=$(this).attr("data");
-
+			firstfoto=$(this).find('> div').attr('id');
+			firstData=document.getElementById(""+firstfoto).getAttribute('data');
+			// alert(firstData);
 			//testing to see whether firstPhoto variable returns strings
-			$(this).css({'background':''+firstPhoto});
-
-			$(this).addClass('match'); 
+			// $(this).css({'background':'url('+firstPhoto+")"});
+			$("#"+firstfoto + " img").css({"opacity":"1"});
 		}
-		else{
+		else if (firstData!=""){
+			//firstfoto not equal to empty
 
-			secondPhoto=$(this).attr("data");
-			$(this).css({'background':''+secondPhoto});
+			secondfoto=$(this).find('> div').attr('id');
+			secondData=document.getElementById(""+secondfoto).getAttribute('data');
+			$("#"+secondfoto+ " img").css({"opacity":"1"});
 
-			if (secondPhoto==firstPhoto){
-				$(this).addClass('match');
+
+			if (secondData==firstData){
+
 				//remove matched DOM element
-
-				setTimeout('removeTiles()',3000);
+				// alert(firstData);
+				// alert(secondData);
+				setTimeout(removeTiles,3000, firstfoto,secondfoto);
 
 			}
 			else{
-				$(this).addClass('unmatch');
-				setTimeout('resetTiles()',3000);
+				// alert(firstfoto);
+				// alert(secondfoto);
+				setTimeout(resetTiles,3000,firstfoto,secondfoto);
+					// resetTiles(firstfoto,secondfoto);
+					// firstfoto.css({'opacity':'0'});
+					// secondfoto.css({'opacity':'0'});
+
+
+
 			}
 
-			firstPhoto="";
-			secondPhoto="";
+			firstfoto=null;
+			secondfoto=null;
+			firstData="";
+			secondData="";
 		}
-		//add 'match' to class of 1st clicked square
-
-			
-	// 	//get attribute of string data of associated with square
-	// 	var dataValue=$(this).getAttribute("data");
-		
-		//listen for another click event
-		// $(".squares").click(function(){
-
-		// 	//after clicking on square->get attribute data from square and background to new color
-		// 	var secondPhoto=$(this).attr("data");
-
-		// 	//testing to see whether secondPhoto variable returns strings
-		// 	$(this).css({'background':''+secondPhoto});
-
-		// 	setTimeout(3000);
-		// 	if (secondPhoto==firstPhoto){
-		// 		//the firstPhoto and secondPhoto data values are the same
-		// 		//then add class match to secondPhoto square and hide match squares
-		// 		$(this).addClass('match');
-		// 		$('.match').hide();
-		// 	}
-		// 	else{
-
-		// 		//otherwise revert current square background to blue
-		// 		$(this).css({'background':'blue'});
-
-		// 		//revert match square back to blue
-		// 		$('.match').css({'background':'blue'});
-
-		// 		//and remove 'match' from first square
-		// 		$('.match').removeClass('match');
-		// 	}
-
 		
 	});
 
@@ -124,20 +108,10 @@ function randomize(){
 			countArray[randNum-1]++;
 
 
-		// alert(randNum);
-		// alert(countArray);
-
-		//call photostring-json data function
-		var photoString=jsonPhoto(randNum);
+			
+		//uses the id to add random number class to  inner most div i.e. photoHold
+		$('#'+count).addClass(""+randNum).attr("data",""+randNum);
 		
-		//assigns randomnumber to square data html5 attribute
-		document.getElementById(''+count).setAttribute('data',photoString);
-		$('#'+count).addClass(""+randNum);
-		
-
-
-
-
 		//test to check if counter is working correctly
 		// $("#"+count).css({"background":"red"});
 		
@@ -145,23 +119,48 @@ function randomize(){
 		count++;
 	}
 }
-function jsonPhoto(randNum){
+function arrayColor(randNum){
 	//function gets json data from web than returns photo web string
 
 
-	var arrayPhoto=["red","green","yellow","orange","black","white","purple","darkgreen"];
 
-	return arrayPhoto[randNum-1];
 }
-function resetTiles(){
-				$('.unmatch').css({'background':'blue'});
-				$('.match').css({'background':'blue'});
-				$('.match').removeClass('match');
-				$('.unmatch').removeClass('unmatch');
+function resetTiles(firstfoto,secondfoto){
+				$("#"+firstfoto+ " img").css({'opacity':'0'});
+				$("#"+secondfoto+ " img").css({'opacity':'0'});
+
 }
-function removeTiles(){
-				// $('.match').remove();
-				$('.match').addClass('hides');
-				// $('.hides').css({'background':'black'});
-				$('.match').removeClass('match');
+function removeTiles(firstfoto,secondfoto){
+				$("#"+firstfoto).parent().css({'opacity':'0'});
+				$("#"+secondfoto).parent().css({'opacity':'0'});
+
 }
+
+// From Instagram API
+// CLIENT ID	16bd30e740c046ec935b89ff0c315d4a
+// CLIENT SECRET	2061451a33984b9f95e59a720785c740
+function getArrayPhoto(){
+	// "https://instagram.com/oauth/authorize/?client_id=16bd30e740c046ec935b89ff0c315d4a&redirect_uri=http://solo206.github.io/photoRecall&response_type=token"
+	var arrayPhoto="";
+	var result=$.ajax({
+		type:"GET",
+		dataType:"jsonp",
+		cache:false,
+		url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		success:function(data){
+		for(var i=1;i<9;i++){
+				// $("."+(i+1)).css({'background':"url("+data.data[i].images.low_resolution.url+")"});
+				$("."+i).append('<img src="'+data.data[i].images.low_resolution.url+'"width="100%">');
+				
+			}//for
+		for (var i=1;i<17;i++){
+			$("#"+i+" img").css({'opacity':'0'});
+		}
+		
+
+		},//success
+		error: function(data){
+			console.log(data);
+		}
+	});//ajax
+}//function

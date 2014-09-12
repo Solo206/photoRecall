@@ -1,0 +1,65 @@
+html, body{
+	height:100%;
+	margin:0;
+	padding:0;
+}
+header{
+	position:relative;
+	height:15%;
+	background:grey;
+}
+section{
+	height:85%;
+	background:lightblue;
+	border:5px solid blue;
+}
+.title{
+	position:relative;
+/*	height:100%;*/
+	text-align:center;
+	font-size:4em;	
+	border:1px solid black;
+	top:25%;
+	color:white;
+
+/*	vertical-align: middle;*/
+}
+.howTitle, .instruct, .luck{
+	position:relative;
+	top:25%;
+	line-height:75px;
+
+}
+.howTitle{
+	left:40%;
+	font-size:2.8em;
+	text-decoration:underline;
+}
+.instruct{
+	left:40%;
+	font-size:2em;
+}
+.luck{
+	left:40%;
+	font-size:2em;
+}
+
+
+/*social media and replay button*/
+.social{
+	display:inline-block;
+	float:left;
+}
+
+.social li{
+	display:inline-block;
+}
+
+.replay{
+	display:inline-block;
+	float:right;
+}
+.photoHold{
+	opacity:1.0;
+}
+
