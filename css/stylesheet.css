@@ -96,12 +96,13 @@ section{
 .gameOver{
 position:relative;
 display:block;
+text-align:center;
 
 }
 .prize{
 	position:relative;
 	height:80%;
-	width:80%;
+	width:55%;
 	left:10%;
 	background:grey;
 	top:5%;
@@ -120,14 +121,15 @@ display:block;
 	font-size:5em;
 	top:-70%;
 	background:grey;
-	opacity:0.8;
+	opacity:0.6;
 	border-radius:10px;
 }
 .photo{
 	position:relative;
-	background:url('../can1.png');
+/*	background:url('../can1.png');*/
 	height:100%;
-	background-size:cover;
+	/*background-size:cover;*/
+
 	z-index:1;
 }
 /*social media and replay button*/

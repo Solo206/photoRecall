@@ -177,4 +177,20 @@ function setStar(){
 function setGameOver(){
 	$('.play').hide();
 	$('.gameOver').show();
+	getPrizePhoto();
 }
+function getPrizePhoto(){
+	// "https://instagram.com/oauth/authorize/?client_id=16bd30e740c046ec935b89ff0c315d4a&redirect_uri=http://solo206.github.io/photoRecall&response_type=token"
+	var result=$.ajax({
+		type:"GET",
+		dataType:"jsonp",
+		cache:false,
+		url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		success:function(data){
+				$(".photo").append('<img src="'+data.data[9].images.low_resolution.url+'" width="auto" height="100%" style:>');
+		},//success
+		error: function(data){
+			console.log(data);
+		}
+	});//ajax
+}//function
