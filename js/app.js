@@ -70,6 +70,12 @@ $(document).ready(function(){
 			setTimeout(setGameOver,2000);
 		}
 	});
+	$('.replay').click(function(){
+		$(".squares").css({'opacity':'1'});
+		$(".photoHold").css({'opacity':'0'});
+		reset();
+
+	})
 
 });
 function reset(){
@@ -152,7 +158,9 @@ function getArrayPhoto(){
 		type:"GET",
 		dataType:"jsonp",
 		cache:false,
-		url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		url:"https://api.instagram.com/v1/tags/dogs/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		// url:"https://api.instagram.com/v1/locations/514276/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
 		success:function(data){
 		for(var i=1;i<9;i++){
 				// $("."+(i+1)).css({'background':"url("+data.data[i].images.low_resolution.url+")"});
