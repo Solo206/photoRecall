@@ -37,21 +37,30 @@ $(document).ready(function(){
 		else if (firstData!=""){
 			//firstfoto not equal to empty
 
+			//find the descendant div of current element and get attribute of id, set as secondfoto 
 			secondfoto=$(this).find('> div').attr('id');
+			//set secondData as attribute of secondfoto
 			secondData=document.getElementById(""+secondfoto).getAttribute('data');
+			
+			//set opacity to 1 so second foto can be visible
 			$("#"+secondfoto+ " img").css({"opacity":"1"});
 
-
+			//if attribute of second data equals attribute of first data
 			if (secondData==firstData){
 
 				//remove matched DOM element
 				// alert(firstData);
 				// alert(secondData);
+
+				//increment star count
 				starCount++;
+
+				//wait half a second and remove phototiles
 				setTimeout(removeTiles,500, firstfoto,secondfoto,starCount);
 
 			}
 			else{
+				//otherwise wait half a second and set opacity back to 0 on selected tiles
 				setTimeout(resetTiles,500,firstfoto,secondfoto);
 
 			}
@@ -62,12 +71,14 @@ $(document).ready(function(){
 			secondData="";
 		}
 		if (starCount==8){
+			//when the star counter fills to 8 i.e. stars are filled to 8, then wait 1 second and load
+			//game over tile
 			setTimeout(setGameOver,1000,topic);
 		}
 	});
 	$('.replay').click(function(){
+		//reloads entire page
 		location.reload();
-
 	})
 
 });
@@ -79,8 +90,9 @@ function reset(){
 };
 
 function randomize(){
-	//randomly assign values of 1-8 to a square
+	//Purpose: randomly assign values of 1-8 to a square
 	//if the 2 squares are already assigned same value, remove number from
+	
 	var count=1;
 
 	//create an number counter array to prevent more than 2 numbers from being assigned  
@@ -95,9 +107,7 @@ function randomize(){
 			//initializes randNum variable with numerical value from 1-8
 			var randNum=Math.floor((Math.random()*8)+1);
 
-			//test alerts
-			// alert(randNum);
-			// alert(countArray);
+
 
 			while (countArray[randNum-1]>=2){
 				//will loop if the array element value is two or more,
@@ -127,14 +137,19 @@ function arrayColor(randNum){
 
 }
 function resetTiles(firstfoto,secondfoto){
+
+				//reset photo tiles by setting opacity to 0
 				$("#"+firstfoto+ " img").css({'opacity':'0'});
 				$("#"+secondfoto+ " img").css({'opacity':'0'});
 
 }
 function removeTiles(firstfoto,secondfoto,starCount){
 				
+				//remove tiles by setting parent of photo tiles to 0 opacity 
 				$("#"+firstfoto).parent().css({'opacity':'0'});
 				$("#"+secondfoto).parent().css({'opacity':'0'});
+
+				//show stars based on number of stars counted
 				setStar(starCount);
 
 }
@@ -149,19 +164,24 @@ function getArrayPhoto(topic){
 		type:"GET",
 		dataType:"jsonp",
 		cache:false,
-		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+
+		//retrieve most current topic related photos from Instagram server
 		url:"https://api.instagram.com/v1/tags/"+topic+"/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-		// url:"https://api.instagram.com/v1/locations/514276/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+
 		success:function(data){
 		for(var i=1;i<9;i++){
-				// $("."+(i+1)).css({'background':"url("+data.data[i].images.low_resolution.url+")"});
+
+			//append photo to photoHolder in photoTile area in play container
 				$("."+i).append('<img src="'+data.data[i].images.low_resolution.url+'"width="100%">');
 				
 			}//for
 
 		for (var i=1;i<17;i++){
+			//set all phototiles in play container to 0 opacity, i.e. hide photos
 			$("#"+i+" img").css({'opacity':'0'});
 		}
+
+		//append photo to prize photo area in gameOvercontainer
 		$(".photo").append('<img src="'+data.data[9].images.low_resolution.url+'"width="auto" height="100%">');	
 		
 
@@ -180,22 +200,8 @@ function setGameOver(topic){
 	$('.gameOver').show();
 	setTimeout(removeCongrat,500);
 }
-// function getPrizePhoto(){
-// 	// "https://instagram.com/oauth/authorize/?client_id=16bd30e740c046ec935b89ff0c315d4a&redirect_uri=http://solo206.github.io/photoRecall&response_type=token"
-// 	var result=$.ajax({
-// 		type:"GET",
-// 		dataType:"jsonp",
-// 		cache:false,
-// 		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-// 		url:"https://api.instagram.com/v1/tags/"+topic+"/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-// 		success:function(data){
-// 				$(".photo").append('<img src="'+data.data[9].images.low_resolution.url+'" width="auto" height="100%" style:>');
-// 		},//success
-// 		error: function(data){
-// 			console.log(data);
-// 		}
-// 	});//ajax
-// }//function
+
 function removeCongrat(){
+	//set superb title to translucent
 	$('.superb').css({'opacity':'0'});
 }
