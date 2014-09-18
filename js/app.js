@@ -66,10 +66,7 @@ $(document).ready(function(){
 		}
 	});
 	$('.replay').click(function(){
-		$(".squares").css({'opacity':'1'});
-		$(".photoHold").css({'opacity':'0'});
-		document.getElementById('txtopic').value="";
-		reset();
+		location.reload();
 
 	})
 
