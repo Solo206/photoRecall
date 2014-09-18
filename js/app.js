@@ -13,7 +13,8 @@ $(document).ready(function(){
 		//executes series of command when document is loaded
 		getArrayPhoto(topic);
 		$(".intro").hide();
-		$(".play").show();
+		$(".play").hide();
+		$(".gameOver").show();
 
 	});
 	//initialize firstphoto as an empty value

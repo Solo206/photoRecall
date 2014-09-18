@@ -141,10 +141,12 @@ text-align:center;
 	position:relative;
 	display:inline-block;
 	height:80%;
-	width:55%;
+	width:60%;
+	padding-top: 5%;
+	padding-bottom:5%;
 	top:2em;
-	background:grey;
-	border:10px solid #6C7A89;
+	background:#d2d7d3;
+	border:10px ridge #59ABE3;
 	vertical-align:middle;
 	text-align:center;
 }
