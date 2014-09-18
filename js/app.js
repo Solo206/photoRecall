@@ -85,9 +85,9 @@ $(document).ready(function(){
 });
 function reset(){
 	 // resets all settings back to original state
-	 $(".intro").show();
-	 $(".play").hide();
-	 $(".gameOver").hide();
+	 $(".intro").hide();
+	 $(".play").show();
+	 // $(".gameOver").hide();
 };
 
 function randomize(){
