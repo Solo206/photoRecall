@@ -13,8 +13,8 @@ $(document).ready(function(){
 		//executes series of command when document is loaded
 		getArrayPhoto(topic);
 		$(".intro").hide();
-		$(".play").hide();
-		$(".gameOver").show();
+		$(".play").show();
+		// $(".gameOver").show()
 
 	});
 	//initialize firstphoto as an empty value
@@ -85,9 +85,9 @@ $(document).ready(function(){
 });
 function reset(){
 	 // resets all settings back to original state
-	 $(".intro").hide();
-	 $(".play").show();
-	 // $(".gameOver").hide();
+	 $(".intro").show();
+	 $(".play").hide();
+	 $(".gameOver").hide();
 };
 
 function randomize(){
