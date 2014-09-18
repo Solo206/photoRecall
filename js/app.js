@@ -11,6 +11,7 @@ $(document).ready(function(){
 		//hides intro and shows play screen after start button pressed
 		$(".intro").hide();
 		$(".play").show();
+		// $(".gameOver").show();
 
 	});
 	//initialize firstphoto as an empty value
@@ -19,6 +20,7 @@ $(document).ready(function(){
 	var firstfoto=null;
 	var secondfoto=null;
 	var starCount=0;
+	// var clickCount=0;
 
 	$(".squares").click(function(event){
 		event.preventDefault();
@@ -27,9 +29,7 @@ $(document).ready(function(){
 			//after clicking on square->get attribute data from square and background to new color
 			firstfoto=$(this).find('> div').attr('id');
 			firstData=document.getElementById(""+firstfoto).getAttribute('data');
-			// alert(firstData);
-			//testing to see whether firstPhoto variable returns strings
-			// $(this).css({'background':'url('+firstPhoto+")"});
+
 			$("#"+firstfoto + " img").css({"opacity":"1"});
 		}
 		else if (firstData!=""){
@@ -46,18 +46,11 @@ $(document).ready(function(){
 				// alert(firstData);
 				// alert(secondData);
 				starCount++;
-				setTimeout(removeTiles,3000, firstfoto,secondfoto,starCount);
+				setTimeout(removeTiles,500, firstfoto,secondfoto,starCount);
 
 			}
 			else{
-				// alert(firstfoto);
-				// alert(secondfoto);
-				setTimeout(resetTiles,3000,firstfoto,secondfoto);
-					// resetTiles(firstfoto,secondfoto);
-					// firstfoto.css({'opacity':'0'});
-					// secondfoto.css({'opacity':'0'});
-
-
+				setTimeout(resetTiles,500,firstfoto,secondfoto);
 
 			}
 
@@ -67,7 +60,7 @@ $(document).ready(function(){
 			secondData="";
 		}
 		if (starCount==8){
-			setTimeout(setGameOver,2000);
+			setTimeout(setGameOver,1000);
 		}
 	});
 	$('.replay').click(function(){
@@ -122,8 +115,6 @@ function randomize(){
 		//uses the id to add random number class to  inner most div i.e. photoHold
 		$('#'+count).addClass(""+randNum).attr("data",""+randNum);
 		
-		//test to check if counter is working correctly
-		// $("#"+count).css({"background":"red"});
 		
 		//increments counter for squares
 		count++;
@@ -159,7 +150,7 @@ function getArrayPhoto(){
 		dataType:"jsonp",
 		cache:false,
 		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-		url:"https://api.instagram.com/v1/tags/cars/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		url:"https://api.instagram.com/v1/tags/dolphins/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
 		// url:"https://api.instagram.com/v1/locations/514276/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
 		success:function(data){
 		for(var i=1;i<9;i++){
@@ -186,6 +177,7 @@ function setGameOver(){
 	$('.play').hide();
 	$('.gameOver').show();
 	getPrizePhoto();
+	// setTimeout(removeCongrat,500);
 }
 function getPrizePhoto(){
 	// "https://instagram.com/oauth/authorize/?client_id=16bd30e740c046ec935b89ff0c315d4a&redirect_uri=http://solo206.github.io/photoRecall&response_type=token"
@@ -193,7 +185,8 @@ function getPrizePhoto(){
 		type:"GET",
 		dataType:"jsonp",
 		cache:false,
-		url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		url:"https://api.instagram.com/v1/tags/dolphins/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
 		success:function(data){
 				$(".photo").append('<img src="'+data.data[9].images.low_resolution.url+'" width="auto" height="100%" style:>');
 		},//success
@@ -202,3 +195,6 @@ function getPrizePhoto(){
 		}
 	});//ajax
 }//function
+function removeCongrat(){
+	$('.superb').css({'opacity':'0'});
+}
