@@ -2,21 +2,31 @@ html, body{
 	height:100%;
 	margin:0;
 	padding:0;
+	background:#ECF0F1;
 }
 header{
 	position:relative;
+	display:block;
 	height:15%;
 	background:grey;
-	border:5px dashed lightgrey;
-	padding-top:3%;
+	border:1em outset darkgrey;
+	top:1%;
+	vertical-align:middle;
+	text-align:center;
+}
+.title{
+margin-top:3%;
 }
 section{
-	height:85%;
+	height:82%;
 	background:lightblue;
-/*	border:5px solid blue;
-*/}
+	border:1em dotted grey;
+	margin-top:1%;
+	margin-bottom:0.5%;
+}
 .col-xs-{
 	position:relative;
+	display:inline-block;
 /*	height:100%;*/
 	text-align:center;
 	font-size:4em;	
@@ -27,35 +37,61 @@ section{
 }
 .intro{
 	display:block;
+	padding-top:3%;
 }
 .howTitle, .instruct, .luck{
 	position:relative;
-	top:35%;
+	display:inline-block;
+	color:#6C7A89;
 	line-height:75px;
 	text-align:left;
 
+	padding-left:30%;
+
 }
 .howTitle{
-	left:0;
-	font-size:2.8em;
+	/*left:0;*/
+	font-size:3em;
 	text-decoration:underline;
 }
 .instruct{
-	left:0;
+	/*left:0;*/
 	font-size:2em;
 }
 .luck{
-	left:0;
+	/*left:0;*/
 	font-size:2em;
 }
+.topic{
+	position:relative;
+	display:inline-block;
+	font-size:2em;
+	float:left;
+	width:300px;
+	border:5px solid grey;
+	border-radius:5px;
+	outline:none;
+	color:black;
+}
+.startHolder{
+	position:relative;
+	display:block;
+	padding:5% 27%;
+}
 .start{
+	position:relative;
+	display:inline-block;
 	background:grey;
 	font-size:2.8em;
-	left:60%;
+	float:right;
+	outline:none;
+	border-radius:10px;
+	border:5px outset darkgrey;
+
 }
 .play{
-	border:1px solid black;
 	display:block;
+	padding-top:1%;
 }
 /*squares*/
 .squares{
@@ -63,7 +99,8 @@ section{
 	height:2.5em;
 	width:2.5em;
 	margin:1%;
-	background:blue;
+	background:#67809F;
+	border:8px ridge #59ABE3;
 }
 .squareHolder{
 	position:relative;
@@ -75,8 +112,7 @@ section{
 .stars{
 	height:16%;
 	position:relative;
-/*	border:5px solid black;*/
-	top:5%;
+	top:1%;
 	text-align:center;
 }
 .starHold{
@@ -103,13 +139,14 @@ text-align:center;
 }
 .prize{
 	position:relative;
+	display:inline-block;
 	height:80%;
 	width:55%;
-	left:25%;
+	top:2em;
 	background:grey;
-	top:5%;
-	border:5px solid lightgrey;
+	border:10px solid #6C7A89;
 	vertical-align:middle;
+	text-align:center;
 }
 .prize .superb{
 	position:relative;
@@ -119,6 +156,7 @@ text-align:center;
 	z-index:2;
 /*	margin-top:-100%;
 */
+	text-align:center;
 	font-size:5em;
 	top:-6em;
 	background:grey;
@@ -136,27 +174,65 @@ text-align:center;
 /*social media and replay button*/
 .socrep{
 	position:relative;
+	display:block;
 	top:5%;
+	vertical-align:middle;
 }
 .social{
 	display:inline-block;
 	position:relative;
-	left:-5%;
+	/*left:-10%;*/
+	float:left;
+	vertical-align:middle;
+	left:20%;
 }
 
 .social li{
 	display:inline-block;
-	font-size:0.4em;
 	position:relative;
+	margin-right:0.1em;
+	vertical-align:middle;
+	height:57px;
+	width:57px;
+	opacity:1.0;
+
 }
 
 .replay{
 	display:inline-block;
-	font-size:1.5em;
+	font-size:2em;
 	position:relative;
-	left:3%;
-	background:lightgrey;
+	right:23%;
+	float:right;
+	background:grey;
+	vertical-align:middle;
+	top:0.8em;
+	border-radius:10px;
+	outline:none;
+	border:5px outset darkgrey;
 }
 .hides{
 	opacity:0.0;
+}
+.instagram{
+	background:url(../icon-set2.png) no-repeat -343px 0px;
+}
+.facebook{
+	background:url(../icon-set2.png) no-repeat -172px 0px;
+}
+.twitter{
+	background:url(../icon-set2.png) no-repeat -285px -57px;
+}
+.pinterest{
+	background:url(../icon-set2.png) no-repeat -57px -57px;
+
+}
+
+@media only screen and (max-device-width:480px){
+	/*define mobile specific styles come here*/
+/*	width:480px;*/
+	font-size:0.5em;
+	/*height*/
+	/*float*/
+	/*margins*/
 }

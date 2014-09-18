@@ -1,17 +1,19 @@
 $(document).ready(function(){
-	//executes series of command when document is loaded
-	getArrayPhoto();
+
 	//reset all settings
 	reset();
 	//randomize pairs
 	randomize();
 
-
+	//default
+	var topic="dogs";
 	$(".start").click(function(){
 		//hides intro and shows play screen after start button pressed
+		topic=document.getElementById('txtopic').value;
+		//executes series of command when document is loaded
+		getArrayPhoto(topic);
 		$(".intro").hide();
 		$(".play").show();
-		// $(".gameOver").show();
 
 	});
 	//initialize firstphoto as an empty value
@@ -60,12 +62,13 @@ $(document).ready(function(){
 			secondData="";
 		}
 		if (starCount==8){
-			setTimeout(setGameOver,1000);
+			setTimeout(setGameOver,1000,topic);
 		}
 	});
 	$('.replay').click(function(){
 		$(".squares").css({'opacity':'1'});
 		$(".photoHold").css({'opacity':'0'});
+		document.getElementById('txtopic').value="";
 		reset();
 
 	})
@@ -142,7 +145,7 @@ function removeTiles(firstfoto,secondfoto,starCount){
 // From Instagram API
 // CLIENT ID	16bd30e740c046ec935b89ff0c315d4a
 // CLIENT SECRET	2061451a33984b9f95e59a720785c740
-function getArrayPhoto(){
+function getArrayPhoto(topic){
 	// "https://instagram.com/oauth/authorize/?client_id=16bd30e740c046ec935b89ff0c315d4a&redirect_uri=http://solo206.github.io/photoRecall&response_type=token"
 	var arrayPhoto="";
 	var result=$.ajax({
@@ -150,7 +153,7 @@ function getArrayPhoto(){
 		dataType:"jsonp",
 		cache:false,
 		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-		url:"https://api.instagram.com/v1/tags/dolphins/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		url:"https://api.instagram.com/v1/tags/"+topic+"/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
 		// url:"https://api.instagram.com/v1/locations/514276/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
 		success:function(data){
 		for(var i=1;i<9;i++){
@@ -158,9 +161,11 @@ function getArrayPhoto(){
 				$("."+i).append('<img src="'+data.data[i].images.low_resolution.url+'"width="100%">');
 				
 			}//for
+
 		for (var i=1;i<17;i++){
 			$("#"+i+" img").css({'opacity':'0'});
 		}
+		$(".photo").append('<img src="'+data.data[9].images.low_resolution.url+'"width="auto" height="100%">');	
 		
 
 		},//success
@@ -173,28 +178,27 @@ function setStar(){
 		$('.noStar').first().addClass('star');
 		$('.noStar').first().removeClass('noStar');
 }
-function setGameOver(){
+function setGameOver(topic){
 	$('.play').hide();
 	$('.gameOver').show();
-	getPrizePhoto();
-	// setTimeout(removeCongrat,500);
+	setTimeout(removeCongrat,500);
 }
-function getPrizePhoto(){
-	// "https://instagram.com/oauth/authorize/?client_id=16bd30e740c046ec935b89ff0c315d4a&redirect_uri=http://solo206.github.io/photoRecall&response_type=token"
-	var result=$.ajax({
-		type:"GET",
-		dataType:"jsonp",
-		cache:false,
-		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-		url:"https://api.instagram.com/v1/tags/dolphins/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-		success:function(data){
-				$(".photo").append('<img src="'+data.data[9].images.low_resolution.url+'" width="auto" height="100%" style:>');
-		},//success
-		error: function(data){
-			console.log(data);
-		}
-	});//ajax
-}//function
+// function getPrizePhoto(){
+// 	// "https://instagram.com/oauth/authorize/?client_id=16bd30e740c046ec935b89ff0c315d4a&redirect_uri=http://solo206.github.io/photoRecall&response_type=token"
+// 	var result=$.ajax({
+// 		type:"GET",
+// 		dataType:"jsonp",
+// 		cache:false,
+// 		// url:"https://api.instagram.com/v1/media/popular?client_id=16bd30e740c046ec935b89ff0c315d4a&access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+// 		url:"https://api.instagram.com/v1/tags/"+topic+"/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+// 		success:function(data){
+// 				$(".photo").append('<img src="'+data.data[9].images.low_resolution.url+'" width="auto" height="100%" style:>');
+// 		},//success
+// 		error: function(data){
+// 			console.log(data);
+// 		}
+// 	});//ajax
+// }//function
 function removeCongrat(){
 	$('.superb').css({'opacity':'0'});
 }
