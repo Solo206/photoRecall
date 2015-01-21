@@ -167,8 +167,8 @@ function getArrayPhoto(topic){
 		cache:false,
 
 		//retrieve most current topic related photos from Instagram server
-		url:"https://api.instagram.com/v1/tags/"+topic+"/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
-
+		//url:"https://api.instagram.com/v1/tags/"+topic+"/media/recent?access_token=1487584775.16bd30e.d1f77a3709a4461daec1af4e356955b2",
+		url:"https://api.instagram.com/v1/media/popular?client_id=d4c7f23188e049b69567dcf057406c7d",
 		success:function(data){
 		for(var i=1;i<9;i++){
 
